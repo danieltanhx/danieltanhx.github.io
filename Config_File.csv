@@ -1,0 +1,5 @@
+﻿Plant,Host,User,Password,Client
+APL,sapapl-ent.sapnet.hpecorp.net,,,"""016"""
+R00,sapr00.sapnet.hp.com,,,"""007"""
+DCP,sapgui.its.hpecorp.net,,,"""300"""
+PMG,sappmg-ent.sapnet.hpecorp.net,,,"""255"""
