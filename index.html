@@ -26,9 +26,10 @@
             e.target.innerHTML = "PyScript is really awesome!"
         
         
-        for _ in range(10):
+        for i in range(10):
             change_me_element = document.getElementById('change_me')
             change_me_element.addEventListener('click', pyodide.create_proxy(on_click))
+            print(i)
 
     </py-script>
     
