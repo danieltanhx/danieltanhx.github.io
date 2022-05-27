@@ -22,9 +22,11 @@
     
     <py-script>
         import pyodide
-
+        import datetime as dt
         def on_click(e):
             e.target.innerHTML = "Babo"
+        
+        pyscript.write('today', dt.date.today().strftime('%A %B %d, %Y'))
 
         change_me_element = document.getElementById('change_me')
         change_me_element.addEventListener('click', pyodide.create_proxy(on_click))
