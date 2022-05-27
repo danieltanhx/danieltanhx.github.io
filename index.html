@@ -25,13 +25,11 @@
         def on_click(e):
             e.target.innerHTML = "PyScript is really awesome!"
         
-        def on_click2(e):
-            e.target.innerHTML = "PyScript is really awesome2!"
         
-        
-        change_me_element = document.getElementById('change_me')
-        change_me_element.addEventListener('click', pyodide.create_proxy(on_click))
-        change_me_element.addEventListener('click', pyodide.create_proxy(on_click2))
+        for _ in range(10):
+            change_me_element = document.getElementById('change_me')
+            change_me_element.addEventListener('click', pyodide.create_proxy(on_click))
+
     </py-script>
     
     </body>
