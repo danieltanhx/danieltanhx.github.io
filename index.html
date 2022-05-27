@@ -16,20 +16,22 @@
     <body>
     <h1>PyScript Events</h1>
     <div>
-        <p id="change_me"> I think PyScript is awesome </p>
+        <p id="change_me"> Lim Lee Jin </p>
+        <p id="change_me2"> Daniel Tan </p>
     </div>
     
     <py-script>
         import pyodide
 
         def on_click(e):
-            e.target.innerHTML = "PyScript is really awesome!"
+            e.target.innerHTML = "Babo"
+
+        change_me_element = document.getElementById('change_me')
+        change_me_element.addEventListener('click', pyodide.create_proxy(on_click))
         
-        
-        for i in range(10):
-            change_me_element = document.getElementById('change_me')
-            change_me_element.addEventListener('click', pyodide.create_proxy(on_click))
-            print(i)
+        change_me_element2 = document.getElementById('change_me2')
+        change_me_element2.addEventListener('click', pyodide.create_proxy(on_click))
+
 
     </py-script>
     
