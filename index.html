@@ -16,19 +16,22 @@
     <body>
     <h1>PyScript Events</h1>
     <div>
-        <p> I am just a random element </p>
         <p id="change_me"> I think PyScript is awesome </p>
-        <p> I like hamburgers  </p>
     </div>
     
     <py-script>
-import pyodide
+        import pyodide
 
-def on_click(e):
-    e.target.innerHTML = "PyScript is really awesome!"
-    
-change_me_element = document.getElementById('change_me')
-change_me_element.addEventListener('click', pyodide.create_proxy(on_click))
+        def on_click(e):
+            e.target.innerHTML = "PyScript is really awesome!"
+        
+        def on_click2(e):
+            e.target.innerHTML = "PyScript is really awesome2!"
+        
+        
+        change_me_element = document.getElementById('change_me')
+        change_me_element.addEventListener('click', pyodide.create_proxy(on_click))
+        change_me_element.addEventListener('click', pyodide.create_proxy(on_click2))
     </py-script>
     
     </body>
