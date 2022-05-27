@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <p id="demo"></p>
-  
-      <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
-      <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
-  </head>
-  
-  <py-env>
-    - pandas
-    - requests
-  </py-env> 
-      <style>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+         <style>
             h1 {
                 font-size: 20px; 
                 color: green; 
@@ -31,14 +22,14 @@
     </div>
     
     <py-script>
-        import pyodide
+import pyodide
 
-        def on_click(e):
-            e.target.innerHTML = "PyScript is really awesome!"
-
-        change_me_element = document.getElementById('change_me')
-        change_me_element.addEventListener('click', pyodide.create_proxy(on_click))
+def on_click(e):
+    e.target.innerHTML = "PyScript is really awesome!"
+    
+change_me_element = document.getElementById('change_me')
+change_me_element.addEventListener('click', pyodide.create_proxy(on_click))
     </py-script>
-    <py-repl id="my-repl" auto-generate="true"> </py-repl>
-  <body>
-  </html>
+    
+    </body>
+</html>
