@@ -11,13 +11,33 @@
     - pandas
     - requests
   </py-env> 
-  
-  
-  <body>
-    <h1>Pyscript Tests</h1>
+      <style>
+            h1 {
+                font-size: 20px; 
+                color: green; 
+                text-transform: uppercase;
+                text-align: center; 
+                margin: 0 0 35px 0; 
+                text-shadow: 0px 1px 0px #f2f2f2;
+            }
+        </style>
+    </head>
+    <body>
+    <h1>PyScript Events</h1>
+    <div>
+        <p> I am just a random element </p>
+        <p id="change_me"> I think PyScript is awesome </p>
+        <p> I like hamburgers  </p>
+    </div>
+    
     <py-script>
-      for i in range(1):
-        print('HelloWorld%s'%i)
+        import pyodide
+
+        def on_click(e):
+            e.target.innerHTML = "PyScript is really awesome!"
+
+        change_me_element = document.getElementById('change_me')
+        change_me_element.addEventListener('click', pyodide.create_proxy(on_click))
     </py-script>
     <py-repl id="my-repl" auto-generate="true"> </py-repl>
   <body>
