@@ -1,42 +1,60 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
-        <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
-         <style>
-            h1 {
-                font-size: 20px; 
-                color: green; 
-                text-transform: uppercase;
-                text-align: center; 
-                margin: 0 0 35px 0; 
-                text-shadow: 0px 1px 0px #f2f2f2;
-            }
-        </style>
+  <head>
+    <title>Altair</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <py-env>
+      - altair
+      - pandas
+      - vega_datasets
+    </py-env>
     </head>
     <body>
-    <h1>PyScript Events</h1>
-    <div>
-        <b><p>Today is <u><label id='today'></label></u></p></b>
-        <p id="change_me"> Lim Lee Jin </p>
-        <p id="change_me2"> Daniel Tan </p>
-    </div>
-    
-    <py-script>
-        import pyodide
-        import datetime as dt
-        def on_click(e):
-            e.target.innerHTML = "Babo"
-        
-        pyscript.write('today', dt.date.today().strftime('%A %B %d, %Y'))
+      <div id="altair" style="width: 100%; height: 100%"></div>
+      <py-script output="altair">
+import altair as alt
+from vega_datasets import data
 
-        change_me_element = document.getElementById('change_me')
-        change_me_element.addEventListener('click', pyodide.create_proxy(on_click))
-        
-        change_me_element2 = document.getElementById('change_me2')
-        change_me_element2.addEventListener('click', pyodide.create_proxy(on_click))
+source = data.movies.url
 
+pts = alt.selection(type="single", encodings=['x'])
 
-    </py-script>
-    
+rect = alt.Chart(data.movies.url).mark_rect().encode(
+    alt.X('IMDB_Rating:Q', bin=True),
+    alt.Y('Rotten_Tomatoes_Rating:Q', bin=True),
+    alt.Color('count()',
+        scale=alt.Scale(scheme='greenblue'),
+        legend=alt.Legend(title='Total Records')
+    )
+)
+
+circ = rect.mark_point().encode(
+    alt.ColorValue('grey'),
+    alt.Size('count()',
+        legend=alt.Legend(title='Records in Selection')
+    )
+).transform_filter(
+    pts
+)
+
+bar = alt.Chart(source).mark_bar().encode(
+    x='Major_Genre:N',
+    y='count()',
+    color=alt.condition(pts, alt.ColorValue("steelblue"), alt.ColorValue("grey"))
+).properties(
+    width=550,
+    height=200
+).add_selection(pts)
+
+alt.vconcat(
+    rect + circ,
+    bar
+).resolve_legend(
+    color="independent",
+    size="independent"
+)
+      </py-script>
     </body>
 </html>
