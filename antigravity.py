@@ -23,7 +23,7 @@ class Antigravity:
             self.target.append(self.node)
         else:
             self.target.replaceChildren(self.node)
-        self.xoffset, self.yoffset = 0, 0
+        self.xoffset, self.yoffset = 100, 100
         self.interval = interval
         if fly:
             self.fly()
