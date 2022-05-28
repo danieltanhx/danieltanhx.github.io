@@ -34,11 +34,11 @@ class Antigravity:
     def move(self):
         char = self.node.getElementsByTagName("g")[1]
         char.setAttribute("transform", f"translate({self.xoffset}, {-self.yoffset})")
-        self.xoffset += random.normalvariate(0, 1) / 5
+        self.xoffset += random.normalvariate(0, 1) / 10
         if self.yoffset < 50:
-            self.yoffset += 0.1
+            self.yoffset += 0.2
         else:
-            self.yoffset += random.normalvariate(0, 1) / 5
+            self.yoffset += random.normalvariate(0, 1) / 10
 
 
 _auto = Antigravity(append=True)
