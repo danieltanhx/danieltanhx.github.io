@@ -8,7 +8,7 @@ from pyodide.http import open_url
 
 class Antigravity:
 
-    url = "./antigravity.svg"
+    url = "./field_topology_2x.svg"
 
     def __init__(self, target=None, interval=10, append=True, fly=False):
         target = target or sys.stdout._out
