@@ -57,10 +57,6 @@
      id="layer1"
      transform="translate(-15.219743,-52.009746)">
     <path
-       id="background"
-       style="fill:#000000;stroke-width:1.33333"
-       d="M230.300596,110.171584h60" transform="matrix(.69016 0.723657-.723657 0.69016 339.381731-84.384601)" fill="#fff" stroke="#166bff" stroke-width="14" stroke-linecap="round"/>
-    <g
        id="python">
       <path
          id="path883-5"
